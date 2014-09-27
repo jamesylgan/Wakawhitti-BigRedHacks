@@ -1,5 +1,6 @@
 import requests
 import ccy
+import pycountry
 
 # from bs4 import BeautifulSoup
 
@@ -20,6 +21,7 @@ currency_list = {'AED' : 3.67, 'ARS' : 3.44, 'AUD' : 1.35, 'BGN' : 1.60,
 	'TOP' : 2.01, 'TRY' : 1.61, 'TWD' : 32.19, 'TZS' : 1268.51, 'USD' : 1.00,
 	'VEF' : 4.70, 'VND' : 17448.41, 'VUV' : 115.96, 'WST' : 3.15, 'XOF' : 524.16,
 	'XPF' : 101.56, 'ZAR' : 6.32}
+
 
 def convert(a, b, c):
 	a = a.upper()
@@ -44,13 +46,18 @@ def get_dataz(html_string):
 			html_string = html_string[next_td+5:]
 	return ret
 
+def get_currency_list(curr):
+	try:
+		return currency_list[curr]
+	except:
+		return "Sorry, that currency is not supported"
+
 def get_average(lst):
 	ave = 0
 	for i in lst:
 		ave += i
 	return ave / len(lst)
 
-# need to test
 def exchange_ratio(curr):
  	cpis = consumer_price_index()
 	try:
@@ -94,12 +101,10 @@ def cc_of_country(country):
 # currency code and country name, yay
 # other than that preyy much done. huzzah!
 def strength_of_dollar(country):
-	print cpi_ratio(country)
-	print currency_list[cc_of_country(country)]
 	return cpi_ratio(country) * currency_list[cc_of_country(country)]
 
 def sod_col(here, there, country):
-	pass
+	return cost_of_living_difference(here, there) * currency_list[cc_of_country(country)]
 
 # works great if we get cities
 def cost_of_living_difference(here, there):
@@ -113,6 +118,10 @@ def cost_of_living_difference(here, there):
 		difference = html[html.find("expensiver")+12:html.find("</span>")-1]
 		return float("." + difference)
 
+def pdiff(curr):
+	cer = exchange_rate(curr)
+	mer = currency_list[curr]
+	return (cer - mer) / mer
 
 if __name__ == '__main__':
 	# print convert("USD","EUR",1)
@@ -127,11 +136,19 @@ if __name__ == '__main__':
  	# cpis = consumer_price_index()
  	# print cpis["UnitedStates"]
 
+ 	print cost_of_living_difference("ithaca","new_york_city")
+
 # 	print cost_of_living_difference("ithaca", "mumbai")
 
-	# print cc_of_country("Afghanistan")
+	#print cc_of_country("South Africa")
 
-	print strength_of_dollar("Somalia")
+	# print sod_col("ithaca","paris", "France")
+
+	# print cost_of_living_difference("ithaca","paris")
+	# print cost_of_living_difference("ithaca","mumbai")
+	# print cost_of_living_difference("mumbai","paris")
+
+	# print strength_of_dollar("Somalia")
 
  	# print cpi_ratio("India")
  	# print exchange_ratio("INR")
