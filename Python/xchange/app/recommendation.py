@@ -127,30 +127,21 @@ def rank_cities(country_code):
 		return lst
 	return lst[:NUM_SUGGESTIONS]
 
-"""
-f3 = open('currency_dict_dump', 'r')
-currency_dict = pickle.load(f3)
-f3.close()
-print(currency_dict.keys())
-"""
-
-"""
-setup()
-for cont in continent_dict.values():
-	print('continent {0} has {1} countries'.format(cont.name, len(cont.country_list)))
-	for country in cont.country_list:
-		print('country {0} has {1} cities'.format(country.name, len(country.city_list)))
-"""
-
-"""
-setup()
-#load()
-for cont in continent_dict.values():
-	print('continent {0} has {1} countries'.format(cont.name, len(cont.country_list)))
-	for country in cont.country_list:
-		print('{0} avg rate: {1}, curr rate: {2}, delta percent: {3}'.format(country.name, country.avg_rate, country.curr_rate, country.delta_percent))
-"""
-
+def get_hotel_data(city_name, check_in, check_out):
+	response = get('http://www.priceline.com/api/hotelretail/listing/v3/{0}/{1}/{2}/1/50'.format(city_name, check_in, check_out))
+	try:
+		data = response.json()
+	except:
+		raise InvalidRequest(req + ' is not a valid request.')
+	if 'error' in data:
+		raise CallError('Error: ' + data['error'])
+	hotel_list = []
+	for hotel_id in data['hotels'].keys():
+		hotel = data['hotels'][hotel_id]
+		hotel_list.append((hotel['hotelName'], hotel['starRating']))
+		print('{0} rating: {1}'.format(hotel['hotelName'], hotel['starRating']))
+	return sorted(hotel_list, key=lambda hotel: hotel[1], reverse=True)[:10]
+	
 if __name__ == '__main__':
 	for continent_name in continent_name_to_id:
 		print 'country recommendation'
