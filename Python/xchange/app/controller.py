@@ -15,10 +15,6 @@ def suggestions(request):
 			  'return_date': return_date }
 	print params
 	return render(request, 'suggestions.html', params)
-	# params = { 'countries': {'USA': { 'exchange_info': 'Monieesss', 'cities': ['New York', 'San Francisco']}},
-	# 		  'departure_date': 'now!',
-	# 		  'return_date': 'tomorrow!' }
-	# return render(request, 'suggestions.html', params)
 
 def results(request):
 	country = request.POST['country']

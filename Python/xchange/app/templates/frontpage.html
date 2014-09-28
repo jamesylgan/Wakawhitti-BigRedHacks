@@ -3,25 +3,14 @@
 <head>
 
 	<!-- {% load staticfiles %} -->
-	<link rel="stylesheet" type="text/css" href="stylesheet.css" />
+	<link rel="stylesheet" type="text/css" href="/static/stylesheet.css" />
 	<title>{{ name }}</title>
 	<!-- </script> WHAT DOES THIS DO?-->
 </head>
 
 
 <body class="header">
-	<div id="header5" class="header5">
-    <div class="section-container">
-        <img src="header.png" class="logo" alt="wakawhitti">
-        <ul id="navlist">
-	        <div class="potato">junk, you can change this to a link (a href=) if you want</div>
-<!-- 	        <li><a href="#connect" class="connect" data-panel="connect">CONNECT</a></li>
-	        <li><a href="#about" class="about" data-panel="about">ABOUT</a></li> -->
-        </ul>
-    </div>
-</div>
-	<br></br>
-	<img src="header.png" alt="Header">
+	<img src="/static/logo.png" alt="Header">
 	<form action="/suggestions/" method="post" class="form-inputs">
 		<div id="container">
 			<div class="departure">
@@ -49,7 +38,7 @@
 
 		</div>
 		<div>
-			<img src="plane.png" alt="plane" style="height:75" >
+			<img src="/static/plane.png" alt="plane" style="height:75" >
 		</div>
 
 	</form>
