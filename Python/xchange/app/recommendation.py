@@ -79,6 +79,8 @@ def load():
 def get_recommendation(continent_name):
 	global continent_name_to_id, continent_dict, NUM_SUGGESTIONS
 
+	d = {}
+
 	if continent_dict == None:
 		load()
 
@@ -90,9 +92,22 @@ def get_recommendation(continent_name):
 		return sorted(countries, key=lambda country: country.delta_percent, reverse=True)[:NUM_SUGGESTIONS]
 	else:
 		lst = continent_dict[continent_name_to_id[continent_name.upper()]].country_list
-		if len(lst) <= NUM_SUGGESTIONS:
-			return lst
-		return lst[:NUM_SUGGESTIONS]
+		count = 0
+		for country in lst:
+			best_city_list = rank_cities(country.country_code)
+			city_name_list = []
+			for city in best_city_list:
+				city_name_list.append(city.name)
+
+			lsd = {'exchange_info' : country.delta_percent, 'cities' : city_name_list}
+			d[country.name] = lsd
+			if count >= NUM_SUGGESTIONS:
+				break
+			count += 1
+	
+		return d
+
+	#     {'USA': { 'exchange_info': 'Monieesss', 'cities': ['New York', 'San Francisco']}}
 
 def rank_cities(country_code):
 	global continent_dict, country_to_continent, NUM_SUGGESTIONS
@@ -136,10 +151,11 @@ for cont in continent_dict.values():
 		print('{0} avg rate: {1}, curr rate: {2}, delta percent: {3}'.format(country.name, country.avg_rate, country.curr_rate, country.delta_percent))
 """
 
-for continent_name in continent_name_to_id:
-	print 'country recommendation'
-	for country in get_recommendation(continent_name):
-		print('{0} avg rate: {1}, curr rate: {2}, delta percent: {3}'.format(country.name, country.avg_rate, country.curr_rate, country.delta_percent))
-		print 'city recommendation'
-		for city in rank_cities(country.country_code):
-			print('city {0} population {1}'.format(city.name, city.population))
+if __name__ == '__main__':
+	for continent_name in continent_name_to_id:
+		print 'country recommendation'
+		for country in get_recommendation(continent_name):
+			print('{0} avg rate: {1}, curr rate: {2}, delta percent: {3}'.format(country.name, country.avg_rate, country.curr_rate, country.delta_percent))
+			print 'city recommendation'
+			for city in rank_cities(country.country_code):
+				print('city {0} population {1}'.format(city.name, city.population))
