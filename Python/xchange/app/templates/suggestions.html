@@ -3,12 +3,12 @@
 <head>
 	
 	<link rel="stylesheet" type="text/css" href="/static/stylesheet.css" />
-	<title>{{ name }}</title>
+	<title>Your Suggestions!</title>
 	
 </head>
 
 <body>
-	<h1 id="suggestions-header">Destinations</h1>
+	<h1 id="suggestions-header">Destinations!</h1>
 	<h3>
 	{% for country, info in countries.items %}
 	    <p>
@@ -21,7 +21,7 @@
 	    		{% for city in info.cities %}
 	    			<!-- <p> -->
 	    				<form action="/results/" method="post">
-	    					<input name="departure_date" type="hidden" value="{{ depature_date }}">
+	    					<input name="departure_date" type="hidden" value="{{ departure_date }}">
 	    					<input name="return_date" type="hidden" value="{{ return_date }}">
 	    					<input name="city" type="hidden" value="{{ city }}">
 	    					<input name="country" type="hidden" value="{{ country }}">

@@ -2,15 +2,15 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="/static/stylesheet.css" />
-	<title>{{ name }}</title>
+	<title>Your Results!</title>
 </head>
 
 <body>
-	<h1>Destinations</h1>
+	<h1 id="suggestions-header">Hotels!</h1>
 	<h3>
 	{% for trip in trips %}
 	    <p>
-	    	{{ trip }}
+	    	<a href="http://www.google.com/#q={{trip}}" style="text-decoration:none" target="_blank">{{ trip }}</a>
 	    </p>
 	{% endfor %}
 	</h3>

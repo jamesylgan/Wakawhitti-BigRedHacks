@@ -1,6 +1,7 @@
 from helpers import Continent, Country, City
 import pickle
 from requests import get, post
+import unicodedata
 
 continent_name_to_id = {'ASIA':'AS', 'AFRICA':'AF', 'NORTH AMERICA': 'NA', 'SOUTH AMERICA': 'SA', 'ANTARCTICA': 'AN', 'EUROPE': 'EU', 'AUSTRALIA':'OC'}
 continent_dict = None
@@ -16,7 +17,7 @@ def getCurrencyId(country_id):
 		try:
 			data = response.json()
 		except:
-			raise InvalidRequest(req + ' is not a valid request.')
+			print "well uh oh"
 		if 'error' in data:
 			raise CallError('Error: ' + data['error'])
 	if country_id not in data['results'].keys():
@@ -132,16 +133,20 @@ def get_hotel_data(city_name, check_in, check_out):
 	try:
 		data = response.json()
 	except:
-		raise InvalidRequest(req + ' is not a valid request.')
+		print "well uh oh"
 	if 'error' in data:
 		raise CallError('Error: ' + data['error'])
 	hotel_list = []
 	for hotel_id in data['hotels'].keys():
 		hotel = data['hotels'][hotel_id]
-		hotel_list.append((hotel['hotelName'], hotel['starRating']))
+		hotel_list.append((remove_accents(hotel['hotelName']) + " - " + str(hotel['starRating'])))
 		print('{0} rating: {1}'.format(hotel['hotelName'], hotel['starRating']))
 	return sorted(hotel_list, key=lambda hotel: hotel[1], reverse=True)[:10]
 	
+def remove_accents(input_str):
+    nkfd_form = unicodedata.normalize('NFKD', input_str)
+    return u"".join([c for c in nkfd_form if not unicodedata.combining(c)])
+
 if __name__ == '__main__':
 	for continent_name in continent_name_to_id:
 		print 'country recommendation'
