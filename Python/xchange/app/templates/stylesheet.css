@@ -20,14 +20,6 @@ body{
    border: 1px solid black;
 }
 
-/*.departure select{
-	-webkit-appearance: none;
-}
-
-.return select{
-
-}*/
-
 .header > img {
 	margin-top: 20px;
 }
@@ -47,7 +39,9 @@ input {
 div.departure, div.continent, div.return, div.submit {
 	display: inline-block;
 	text-align: center;
+	/*color: white;*/
 	padding: 20px;
+	/*text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;*/
 }
 
 div.submit {
@@ -92,6 +86,17 @@ div.submit {
 	margin-top: 40px;
 	/*float: left;*/
 	/*margin-left: 245px;*/
+	   padding: 5px;
+   font-size: 16px;
+   /*line-height: 2;*/
+    width: 240px;
+   height: 34px;
+   overflow: hidden;
+   background-color: lightgray;
+   background-size:42%; /*edit to change size of dropdown arrow*/
+	/*background-position: 145px; if you want to position it, not sure how to move up/down*/
+   border-radius: 15px;
+   border: 1px solid black;
 }
 
 #submit-button:hover{
