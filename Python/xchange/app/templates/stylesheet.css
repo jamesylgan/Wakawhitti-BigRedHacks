@@ -116,7 +116,7 @@ body {
     margin: 0 0 30px; /* bottom = footer height */
 }
 footer {
-    position: absolute;
+    position: fixed;
     left: 0;
     bottom: 0;
     height: 50px;
@@ -126,3 +126,44 @@ footer {
 
 
 
+/*header*/
+
+#header5{
+   z-index: 200;
+   padding: 1em 0 1.2em 0;
+   height:20px;
+   position:fixed;
+   background-color: #fff;
+   width:100%;
+   border-bottom:1px #d1d1cd solid;
+}
+
+/*#header5 .section-container{
+    max-width: 1200px;
+    padding: 0 40px;
+}
+ul.header5-social-media {
+    float:right;
+    position: relative;
+    //top: -2px;
+    margin: 0 0 0 10px;
+    padding: 0;
+}
+
+ul.header5-social-media li{
+    padding-right: 5px;
+}
+*/
+
+.logo {
+    height: 60px;
+    position: left;
+    margin-top: -35px;
+    float:left;
+}
+
+.potato{
+	margin-top: -15px;
+	margin-right:15px;
+	float:right;
+}
