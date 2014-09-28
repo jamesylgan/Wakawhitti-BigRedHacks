@@ -1,0 +1,39 @@
+<!DOCTYPE>
+<html>
+<head>
+	
+	<link rel="stylesheet" type="text/css" href="/static/stylesheet.css" />
+	<title>{{ name }}</title>
+	
+</head>
+
+<body>
+	<h1 id="suggestions-header">Destinations</h1>
+	<h3>
+	{% for country, info in countries.items %}
+	    <p>
+	    	<div class="country">
+	    		<h3>{{ country }}</h3>
+	    		<span>{{ info.exchange_info }}</span>
+    		</div>
+	    	<div>
+	    		<h3>
+	    		{% for city in info.cities %}
+	    			<!-- <p> -->
+	    				<form action="/results/" method="post">
+	    					<input name="departure_date" type="hidden" value="{{ depature_date }}">
+	    					<input name="return_date" type="hidden" value="{{ return_date }}">
+	    					<input name="city" type="hidden" value="{{ city }}">
+	    					<input name="country" type="hidden" value="{{ country }}">
+	    					<input type="submit" value="{{ city }}">
+	    				</form>
+	    			<!-- </p> -->
+	    		{% endfor %}
+				</h3>
+	    	</div>
+	    </p>
+	{% endfor %}
+	</h3>
+</body>
+
+</html>

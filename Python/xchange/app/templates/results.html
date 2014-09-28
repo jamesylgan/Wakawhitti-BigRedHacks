@@ -1,0 +1,19 @@
+<!DOCTYPE>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="/static/stylesheet.css" />
+	<title>{{ name }}</title>
+</head>
+
+<body>
+	<h1>Destinations</h1>
+	<h3>
+	{% for trip in trips %}
+	    <p>
+	    	{{ trip }}
+	    </p>
+	{% endfor %}
+	</h3>
+</body>
+
+</html>

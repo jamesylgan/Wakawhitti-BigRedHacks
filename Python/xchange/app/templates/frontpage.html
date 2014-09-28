@@ -1,0 +1,47 @@
+<!DOCTYPE>
+<html>
+<head>
+
+	<!-- {% load staticfiles %} -->
+	<link rel="stylesheet" type="text/css" href="/static/stylesheet.css" />
+	<title>{{ name }}</title>
+	<!-- </script> WHAT DOES THIS DO?-->
+</head>
+
+
+<body class="header">
+	<img src="/static/header.png" alt="Header">
+	<form action="/suggestions/" method="post" class="form-inputs">
+		<div id="container">
+			<div class="departure">
+				<h2>Departure Date:</h2>
+				<input type="date" name="departure_date" placeholder="Departure Date">
+			</div>
+			<div class="continent">
+				<h2>Continent:</h2>
+				<select name="region" placeholder="Continent">
+					<option value="Africa">AFRICA</option>
+					<option value="Asia">ASIA</option>
+					<option value="Austrailia">AUSTRAILIA</option>
+					<option value="Europe">EUROPE</option>
+					<option value="NA">NORTH AMERICA</option>
+					<option value="SA">SOUTH AMERICA</option>
+				</select>
+			</div>
+			<div class="return">
+				<h2>Return Date</h2>
+				<input type="date" name="return_date" placeholder="Return Date">
+			</div> 
+		</div>
+		<div class="submit">
+			<input type="submit" value="LET'S GO SOMEWHERE" id="submit-button">
+
+		</div>
+		<div>
+			<img src="/static/plane.png" alt="plane" style="height:75" >
+		</div>
+
+	</form>
+
+</body>
+</html>
