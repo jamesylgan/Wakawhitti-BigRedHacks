@@ -86,7 +86,7 @@ div.submit {
 	margin-top: 40px;
 	/*float: left;*/
 	/*margin-left: 245px;*/
-	   padding: 5px;
+	padding: 5px;
    font-size: 16px;
    /*line-height: 2;*/
     width: 240px;
@@ -107,7 +107,22 @@ div.submit {
 	margin-top: 50px;
 }
 
-
+/*Footer stuff*/
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin: 0 0 30px; /* bottom = footer height */
+}
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    background-color: FF7676;
+}
 
 
 
