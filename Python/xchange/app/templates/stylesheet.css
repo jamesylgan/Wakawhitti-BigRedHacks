@@ -1,0 +1,108 @@
+body{
+	background-color: #4ECDC4;	
+	text-align: center;
+	margin: 0 auto;
+	font-family: "Comic Sans MS";
+}
+
+.continent select {
+   padding: 5px;
+   font-size: 16px;
+   /*line-height: 2;*/
+    width: 240px;
+   height: 34px;
+   overflow: hidden;
+   background: url(drop.png) no-repeat right; #ddd;
+   background-color: white;
+   background-size:42%; /*edit to change size of dropdown arrow*/
+	/*background-position: 145px; if you want to position it, not sure how to move up/down*/
+   border-radius: 15px;
+   border: 1px solid black;
+}
+
+/*.departure select{
+	-webkit-appearance: none;
+}
+
+.return select{
+
+}*/
+
+.header > img {
+	margin-top: 20px;
+}
+
+input {
+	border-radius: 15px;
+	border:solid 1px black; 
+	padding:5px;
+}
+#container {
+	width: 800px;
+	text-align: center;
+	margin: 0 auto;
+
+}
+
+div.departure, div.continent, div.return, div.submit {
+	display: inline-block;
+	text-align: center;
+	padding: 20px;
+}
+
+div.submit {
+	margin-top: 50px;
+}
+
+.drop-down{
+	/*display: block;*/
+	text-align: center;
+	/*padding-left: 50px;*/
+	/*margin-left: 250px;*/
+	/*margin-top: 100px;*/
+}
+
+.header{
+	text-align: center;
+	margin-bottom: -75px;
+}
+.form-inputs{
+	/*margin-left: 28%;*/
+	margin-top: 100px;
+}
+
+.depart{
+	/*float: left;*/
+	/*text-align: center;*/
+	padding-left: 20px;
+	padding-right: 20px;
+	/*margin-left: -400px;*/
+}
+
+.return{
+	/*float: left;*/
+	/*text-align: center;*/
+	padding-left: 20px;
+	padding-right: 20px;
+	/*margin-right: 400px;*/
+}
+
+
+#submit-button{
+	margin-top: 40px;
+	/*float: left;*/
+	/*margin-left: 245px;*/
+}
+
+#submit-button:hover{
+     opacity: 0.8;
+}
+
+#suggestions-header{
+	margin-top: 50px;
+}
+
+
+
+
+
